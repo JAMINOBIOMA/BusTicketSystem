@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Ticket Booking</title>
+</head>
+<body>
+    <h1>Available Buses</h1>
+    <ul>
+        {% for bus in buses %}
+        <li>{{ bus.name }} - ${{ bus.price }}
+            <form action="{{ url_for('book_ticket', bus_id=bus.id) }}" method="post">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <button type="submit">Book Ticket</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
